@@ -1,0 +1,10 @@
+language: generic
+sudo: required #for all commands we need sudo
+services:
+  - docker
+
+before_install: 
+  - docker build -t altinilke/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true altinilke/docker-react npm run test
